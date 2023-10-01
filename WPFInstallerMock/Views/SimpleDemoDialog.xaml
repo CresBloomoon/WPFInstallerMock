@@ -1,0 +1,42 @@
+﻿<mah:MetroWindow x:Class="WPFInstallerMock.Views.SimpleDemoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:MvvmWizard.Controls;assembly=MvvmWizard"
+        xmlns:views="clr-namespace:WPFInstallerMock.Views"
+        xmlns:viewModels="clr-namespace:WPFInstallerMock.ViewModels"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="SimpleDemoDialog" Height="450" Width="800"
+        x:Name="ThisWindow">
+
+    <Window.DataContext>
+        <viewModels:SimpleDemoDialogViewModel/>
+    </Window.DataContext>
+    
+    <Grid>
+        <controls:Wizard FinishCommand="{Binding CloseCommand, ElementName=ThisWindow}"
+                         SharedContext="{Binding SharedContext, ElementName=ThisWindow}">
+            <controls:Wizard.Resources>
+                <Style TargetType="controls:WizardStep"
+                       BasedOn="{StaticResource {x:Type controls:WizardStep}}">
+                    <Setter Property="SkipButtonVisibility" Value="Collapsed"/>
+                </Style>
+            </controls:Wizard.Resources>
+
+            <controls:WizardStep x:Name="WelcomeStep"
+                                 ViewType="{x:Type views:WelcomeView}"
+                                 BackButtonVisibility="Collapsed"/>
+            <controls:WizardStep x:Name="InstallPathSettingStep"
+                                 ViewType="{x:Type views:InstallPathSettingView}"
+                                 ForwardButtonIsEnabled="{Binding UnderlyingDataContext.MyIsEnabled, RelativeSource={RelativeSource Self}}"/>
+            <controls:WizardStep x:Name="InstallProgressStep"
+                                 ViewType="{x:Type views:InstallProgressView}"
+                                 ForwardButtonTitle="Install Start"/>
+            <controls:WizardStep x:Name="CompletionStep"
+                                 ViewType="{x:Type views:CompletionView}"
+                                 ForwardButtonTitle="Finish"/>
+        </controls:Wizard>
+    </Grid>
+</mah:MetroWindow>
