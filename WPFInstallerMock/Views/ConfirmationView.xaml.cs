@@ -16,10 +16,10 @@ using WPFInstallerMock.ViewModels;
 
 namespace WPFInstallerMock.Views {
     /// <summary>
-    /// InstallProgressView.xaml の相互作用ロジック
+    /// ConfirmationView.xaml の相互作用ロジック
     /// </summary>
-    public partial class InstallProgressView : UserControl {
-        public InstallProgressView(InstallProgressViewModel viewModel) {
+    public partial class ConfirmationView : UserControl {
+        public ConfirmationView(ConfirmationViewModel viewModel) {
             InitializeComponent();
             DataContext = viewModel;
         }

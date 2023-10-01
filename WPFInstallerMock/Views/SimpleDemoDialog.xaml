@@ -8,7 +8,7 @@
         xmlns:viewModels="clr-namespace:WPFInstallerMock.ViewModels"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="SimpleDemoDialog" Height="450" Width="800"
+        Title="SimpleDemoDialog" Height="580" Width="800"
         x:Name="ThisWindow">
 
     <Window.DataContext>
@@ -31,6 +31,9 @@
             <controls:WizardStep x:Name="InstallPathSettingStep"
                                  ViewType="{x:Type views:InstallPathSettingView}"
                                  ForwardButtonIsEnabled="{Binding UnderlyingDataContext.MyIsEnabled, RelativeSource={RelativeSource Self}}"/>
+            <controls:WizardStep x:Name="ConfirmationStep"
+                                 ViewType="{x:Type views:ConfirmationView}"
+                                 ForwardButtonTitle="Install Start"/>
             <controls:WizardStep x:Name="InstallProgressStep"
                                  ViewType="{x:Type views:InstallProgressView}"
                                  ForwardButtonTitle="Install Start"/>

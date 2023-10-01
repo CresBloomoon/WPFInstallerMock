@@ -4,9 +4,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFInstallerMock.Views"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <StackPanel Margin="50">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                    <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                    <Setter Property="IsReadOnly" Value="True"/>
+                </Style>
+                <Style TargetType="mah:MetroProgressBar" BasedOn="{StaticResource {x:Type mah:MetroProgressBar}}">
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="230"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="Install Progress"
+                       FontSize="35"
+                       Margin="0,0,0,20"/>
+            <TextBox Grid.Row="1"
+                     Text="{Binding InstallFolder}"
+                     Margin="0,0,0,20"/>
+            <mah:MetroProgressBar Grid.Row="2"
+                                  >
+
+            </mah:MetroProgressBar>
+        </Grid>
+    </StackPanel>
 </UserControl>
