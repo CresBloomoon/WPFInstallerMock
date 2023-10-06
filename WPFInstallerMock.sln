@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFInstallerMock", "WPFInstallerMock\WPFInstallerMock.csproj", "{12B3A93C-EFE3-446C-9B32-E50857AB5A5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmWizard", "..\MvvmWizard\MvvmWizard\MvvmWizard.csproj", "{2576F748-0482-42E6-B16D-A1B8E2AF8C2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmWizard", "MvvmWizard\MvvmWizard.csproj", "{2576F748-0482-42E6-B16D-A1B8E2AF8C2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
