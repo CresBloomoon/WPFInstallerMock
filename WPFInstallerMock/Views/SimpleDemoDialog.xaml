@@ -17,6 +17,8 @@
     
     <Grid>
         <controls:Wizard FinishCommand="{Binding CloseCommand, ElementName=ThisWindow}"
+                         CancelCommand="{Binding CloseCommand, ElementName=ThisWindow}"
+                         InstallExecuteCommand="{Binding InstallExecuteCommand, ElementName=ThisWindow}"
                          SharedContext="{Binding SharedContext, ElementName=ThisWindow}">
             <controls:Wizard.Resources>
                 <Style TargetType="controls:WizardStep"
@@ -33,13 +35,16 @@
                                  ForwardButtonIsEnabled="{Binding UnderlyingDataContext.MyIsEnabled, RelativeSource={RelativeSource Self}}"/>
             <controls:WizardStep x:Name="ConfirmationStep"
                                  ViewType="{x:Type views:ConfirmationView}"
-                                 ForwardButtonTitle="Install Start"/>
+                                 ForwardButtonTitle="Next"/>
             <controls:WizardStep x:Name="InstallProgressStep"
                                  ViewType="{x:Type views:InstallProgressView}"
-                                 ForwardButtonTitle="Install Start"/>
+                                 ForwardButtonTitle="Install Start"
+                                 IsInstallExecutionStep="True"/>
             <controls:WizardStep x:Name="CompletionStep"
                                  ViewType="{x:Type views:CompletionView}"
-                                 ForwardButtonTitle="Finish"/>
+                                 ForwardButtonTitle="Finish"
+                                 BackButtonVisibility="Collapsed"
+                                 CancelButtonVisibility="Collapsed"/>
         </controls:Wizard>
     </Grid>
 </mah:MetroWindow>

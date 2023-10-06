@@ -1,17 +1,6 @@
 ﻿using MvvmWizard.Classes;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WPFInstallerMock.Views {
     /// <summary>
@@ -19,18 +8,30 @@ namespace WPFInstallerMock.Views {
     /// </summary>
     public partial class SimpleDemoDialog {
         public SimpleDemoDialog() {
-
-            CloseCommand = new SimpleGenericCommand<Dictionary<string, object>>(ExecuteMethod);
+            this.FinishCommand = new SimpleGenericCommand<Dictionary<string, object>>(FinishMethod);
+            this.CloseCommand = new SimpleGenericCommand<Dictionary<string, object>>(CloseMethod);
+            this.InstallExecuteCommand = new SimpleGenericCommand<Dictionary<string, object>>(InstallExecuteMethod);
             SharedContext = new Dictionary<string, object>();
             SharedContext["In"] = 88;
 
             InitializeComponent();
         }
 
-        private void ExecuteMethod(Dictionary<string, object> obj) {
+        private void FinishMethod(Dictionary<string, object> obj) {
             Close();
         }
+
+        private void CloseMethod(Dictionary<string, object> obj) {
+            Close();
+        }
+
+        private void InstallExecuteMethod(Dictionary<string, object> obj) {
+            //InstallStart();
+        }
+
+        public ICommand FinishCommand { get; }
         public ICommand CloseCommand { get; }
+        public ICommand InstallExecuteCommand { get; }
         public Dictionary<string, object> SharedContext { get; }
     }
 }
